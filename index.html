@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Magic Eight Ball</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #111;
+            color: #00ffcc;
+            text-align: center;
+            padding-top: 50px;
+        }
+
+        .box {
+            background-color: #222;
+            border: 2px solid #00ffcc;
+            padding: 30px;
+            width: 400px;
+            margin: auto;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box" id="output"></div>
+
+<script>
+let playerName;
+let question;
+let playAgain = "yes";
+
+let responses = [
+    "Yes, definitely.",
+    "No, not at all.",
+    "Ask again later.",
+    "The tides say yes.",
+    "The currents say no.",
+    "Signs point to yes.",
+    "Very doubtful.",
+    "The deep remains silent."
+];
+
+playerName = prompt("What is your name?");
+
+let outputText = "<h2>Welcome, " + playerName + ".</h2>";
+
+do {
+    question = prompt("Ask the Magic Eight Ball a yes or no question:");
+
+    let randomIndex = Math.floor(Math.random() * responses.length);
+    let answer = responses[randomIndex];
+
+    outputText += "<p><strong>Question:</strong> " + question + "</p>";
+    outputText += "<p><strong>Answer:</strong> " + answer + "</p><hr>";
+
+    playAgain = prompt("Would you like to ask another question? (yes or no)");
+
+} while (playAgain.toLowerCase() === "yes");
+
+document.getElementById("output").innerHTML = outputText;
+
+</script>
+
+</body>
+</html>
